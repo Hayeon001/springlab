@@ -1,4 +1,6 @@
 package com.kbstar.service;
 
-public class UserService {
+import com.kbstar.frame.MyService;
+
+public class UserService implements MyService {
 }
