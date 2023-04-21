@@ -6,20 +6,23 @@
     // var a;
     //var는 중복체크 안해. 오류 아님
 
-    let login_form = {
-        init:function (){
-            $('#login_btn').click(function (){
-               login_form.send();  //init이벤트 클릭되면 send 호출
-            });
-        },
-        send:function (){
-            $('#login_form').attr({
-                'action':'/loginimpl',  //implement
-                'method':'post',  //MainController로 보내기
-            }); //여러
-            $('#login_form').submit();
-        }
-    };
+    ////////////////////
+    //index0421.js로 이동
+    // let login_form = {
+    //     init:function (){
+    //         $('#login_btn').click(function (){
+    //            login_form.send();  //init이벤트 클릭되면 send 호출
+    //         });
+    //     },
+    //     send:function (){
+    //         $('#login_form').attr({
+    //             'action':'/loginimpl',  //implement
+    //             'method':'post',  //MainController로 보내기
+    //         }); //여러
+    //         $('#login_form').submit();
+    //     }
+    // };
+    ////////////////////
 
     $(function(){
         login_form.init();
@@ -37,6 +40,7 @@
 
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active"><br/><br/>
+                <%--form--%>
                 <form class="form-horizontal" id="login_form">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="id">ID : </label>
@@ -62,7 +66,7 @@
                             <button type="submit" id="login_btn" class="btn btn-default">Login</button>
                         </div>
                     </div>
-                </form>
+                </form> <%--form end--%>
 
             </div>
             <div id="menu2" class="tab-pane fade">

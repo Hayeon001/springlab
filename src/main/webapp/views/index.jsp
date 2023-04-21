@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="EUC-KR" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -11,6 +12,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="/js/index0421.js"></script>
+
     <style>
         .navbar {
             margin-bottom: 0;
@@ -53,33 +57,62 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Logo</a>
+            <a class="navbar-brand" href="/">Logo</a>
         </div> <%--navbar-header end--%>
 
         <%--navbar-collapse--%>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/jsp">JSP</a></li>
+                <li><a href="/cust">Cust</a></li>
+                <li><a href="/item">Item</a></li>
+                <%--<li><a href="#">Contact</a></li>--%>
+                <%--contact는 로그인 해야 보여지도록--%>
+                    <c:if test="${logincust != null}">
+                        <li><a href="#">Contact</a></li>
+                    </c:if>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
-            </ul>
+
+
+            <%--if else--%>
+            <c:choose>
+                <c:when test="${logindust == null}">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
+                    </ul>
+                </c:when>
+                <c:otherwise>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/loginout"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                </c:otherwise>
+            </c:choose>
+
         </div> <%--navbar-collapse end--%>
     </div> <%--navbar end--%>
 </nav>
 
 <div class="container-fluid text-center">
     <div class="row content">
-        <%--sidenav--%>
-        <div class="col-sm-2 sidenav">
-            <p><a href="#">Link</a></p>
-            <p><a href="#">Link</a></p>
-            <p><a href="#">Link</a></p>
-        </div> <%--sidenav end--%>
+
+        <%--left menu center--%>
+        <c:choose>
+            <c:when test="${left == null}">
+                <jsp:include page="left.jsp"/>
+            </c:when>
+            <c:otherwise>
+                <jsp:include page="${left}.jsp"/>
+            </c:otherwise>
+        </c:choose> <%--left menu end--%>
+
+<%--        &lt;%&ndash;sidenav&ndash;%&gt;--%>
+<%--        <div class="col-sm-2 sidenav">--%>
+<%--            <p><a href="#">Link</a></p>--%>
+<%--            <p><a href="#">Link</a></p>--%>
+<%--            <p><a href="#">Link</a></p>--%>
+<%--        </div> &lt;%&ndash;sidenav end&ndash;%&gt;--%>
 
         <%--center--%>
         <c:choose>
