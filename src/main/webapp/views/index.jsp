@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+    <%--Ä«Ä«¿À¸Ê--%>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=da86c8457c75372952796f5bbc52cb25"></script>
     <script src="/js/index0421.js"></script>
 
     <style>
@@ -65,6 +66,9 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
                 <li><a href="/jsp">JSP</a></li>
+                <li><a href="/ajax">AJAX</a></li>
+                <li><a href="/map">MAP</a></li>
+                <li><a href="/chart">CHART</a></li>
                 <li><a href="/cust">Cust</a></li>
                 <li><a href="/item">Item</a></li>
                 <%--<li><a href="#">Contact</a></li>--%>
