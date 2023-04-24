@@ -67,15 +67,16 @@ public class AjaxImplController {
 
     @RequestMapping("/markers")
     public Object markers(String loc) {
-        List<Marker> list = null;
+        //List<Marker> list = null;
+        List<Marker> list = new ArrayList<>();
         if (loc.equals("s")) {
-            list = new ArrayList<>();
+
             list.add(new Marker(100, "비스트로 친친", "http://www.naver.com", 37.5820922, 126.9727623, "lights.jpg", "s"));
             list.add(new Marker(101, "통의동", "http://www.naver.com", 37.5765897, 126.9738104, "nature.jpg", "s"));
             list.add(new Marker(102, "디미", "http://www.naver.com", 37.5792425, 126.9736558, "fjords.jpg", "s"));
 
         } else if (loc.equals("b")) {
-            //list.add(new Marker(100, "국밥", "http://www.naver.com", 37.559667, 126.937041, "lights.jpg", "s" ));
+            list.add(new Marker(106, "국밥", "http://www.naver.com", 37.559667, 126.937041, "lights.jpg", "s" ));
         } else if (loc.equals("j")) {
             list.add(new Marker(103, "성수역점", "http://www.naver.com", 37.548431, 127.0507763, "lights.jpg", "j" ));
             list.add(new Marker(104, "1호점", "http://www.naver.com", 37.5472351, 127.0514373, "lights.jpg", "j" ));

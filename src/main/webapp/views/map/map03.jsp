@@ -5,8 +5,8 @@
 
 <style>
     #map03 > #map{
-        width: 1000px;
-        height: 600px;
+        width: 700px;
+        height: 400px;
         border: 2px solid deepskyblue;
     }
 </style>
@@ -65,7 +65,7 @@
                 url:'/markers',
                 data:{'loc':loc},
                 success:function (data){
-                    //alert(data);
+                    alert(data);
                     map03.displaymarkers(data);
                 }
             });
