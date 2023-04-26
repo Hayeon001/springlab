@@ -34,7 +34,8 @@
                             <tbody>
                             <c:forEach var="obj" items="${allItem}">
                                 <tr>
-                                    <td><img src="/img/${obj.imgname}." class="item_m_img"/><br/>${obj.imgname}</td>
+                                    <%-- img À§Ä¡ --%>
+                                    <td><img src="/uimg/${obj.imgname}." class="item_m_img"/><br/>${obj.imgname}</td>
                                     <td>${obj.id}</td>
                                     <td>${obj.name}</td>
                                     <td><fmt:formatNumber value="${obj.price}" type="currency" /></td>

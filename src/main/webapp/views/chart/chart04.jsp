@@ -14,7 +14,7 @@
     let chart04 = {
         init:function (){
             //차트붙이기
-            var defaultData = 'http://127.0.0.1/logs/custinfo.log';
+            var defaultData = 'http://127.0.0.1/logs/custinfo.log';  //여기 log 위치는 C:\project\logs
             var urlInput = document.getElementById('fetchURL');
             var pollingCheckbox = document.getElementById('enablePolling');
             var pollingInput = document.getElementById('pollingTime');
