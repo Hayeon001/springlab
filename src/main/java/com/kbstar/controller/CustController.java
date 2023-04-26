@@ -1,6 +1,7 @@
 package com.kbstar.controller;
 
 import com.kbstar.dto.Cust;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -9,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+@Slf4j  //logger 대신
 @Controller
 @RequestMapping("/cust")
 public class CustController {
     //cust 눌렀을 때 나오는 부분
-    Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
+    //Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 
     String dir = "cust/";
@@ -24,6 +27,10 @@ public class CustController {
     public String main(Model model){
         model.addAttribute("left",dir+"left");
         model.addAttribute("center",dir+"add");
+        //logger.info("---------------------------------------");  //cust를 클릭할 때마다 로그찍기
+        Random r = new Random();
+        int inx =r.nextInt(1000)+1;
+        log.info(inx+"");
         return "index";
     }
 
