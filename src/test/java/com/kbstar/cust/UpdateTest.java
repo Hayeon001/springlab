@@ -1,4 +1,4 @@
-package com.kbstar.test;
+package com.kbstar.cust;
 
 import com.kbstar.dto.Cust;
 import com.kbstar.service.CustService;
@@ -9,20 +9,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @Slf4j
 @SpringBootTest
-class InsertTest {
+class UpdateTest {
 
     @Autowired
     CustService service;
     @Test
     void contextLoads() {
-        Cust obj = new Cust("id01", "pwd01", "james");
-        //service.register(obj);  ->예외처리 try/catch
+
         try {
-            service.register(obj);
+            service.modify(new Cust("id02","pwd002","james"));
+            log.info("등록 정상..");
         } catch (Exception e) {
-            log.info("등록 에러..");
-            e.printStackTrace();
-            //throw new RuntimeException(e);
+            log.info("오류..");
+            //e.printStackTrace(); //어떤 오류인지 자세히
+
         }
     }
 

@@ -20,7 +20,8 @@ public class CustService implements KBService<String, Cust> {
 
     @Override
     public void register(Cust cust) throws Exception {
-        mapper.insert(cust);
+        mapper.insert(cust); //login table db에 집어넣고
+        mapper.insert(cust); //다른 테이블에도 넣어줌  -> 만약 두번째 작업에 오류가 있다면 첫번째 정상처리분도 되돌려야 => 롤백
         log.info("Send Mail..."+cust.getId());
     }
 
