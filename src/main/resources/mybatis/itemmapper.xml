@@ -20,4 +20,8 @@
         DELETE FROM item WHERE id=#{id}
     </delete>
 
+    <select id="getpage" resultType="item">
+        SELECT * FROM item ORDER BY id DESC  -- 최신순
+    </select>
+
 </mapper>

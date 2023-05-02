@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 
-
     $(function(){
         login_form.init();
     });
@@ -10,7 +9,7 @@
 <div class="col-sm-8  text-left ">
     <div class="container">
         <div class="row content">
-            <div class="col-sm-6  text-left ">
+            <div class="col-sm-10  text-left ">
                 <h1>Login Page</h1>
                 <form id="login_form" class="form-horizontal well">
                     <div class="form-group">

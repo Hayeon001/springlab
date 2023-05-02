@@ -14,11 +14,15 @@ class Web11ApplicationTests {
 
     @Test
     void contextLoads() {
-        String rawPassword = "333333333333333333";
-        String encPassword = encoder.encode(rawPassword);
+        String rawPassword = "pwd01";
+        String encPassword = encoder.encode(rawPassword); //암호화했다
+        log.info("---------------------------------------------");
+        log.info(rawPassword);  //찍어보자
         log.info("암호화 된 비번" + encPassword);
-        boolean result = encoder.matches("111",encPassword);
-        log.info(result+"");
+
+        //matches
+        boolean result = encoder.matches(rawPassword,encPassword);
+        log.info(result+"");  //비교해서 맞으면 true
     }
 
 }

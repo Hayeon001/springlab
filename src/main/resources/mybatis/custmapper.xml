@@ -20,4 +20,8 @@
         DELETE FROM cust WHERE id=#{id}
     </delete>
 
+    <select id="getpage" resultType="cust">
+        SELECT * FROM cust ORDER BY id DESC -- 최신
+    </select>
+
 </mapper>

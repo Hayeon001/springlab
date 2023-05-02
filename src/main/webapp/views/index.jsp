@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- 우리가 만든 js -->
     <script src="/js/index0421.js"></script>
+    <!-- Map -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb8fe6776643b3a6ad18f3e2f14a93c2"></script>
     <!-- HighChart Library -->
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -76,10 +78,15 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="/jsp">JSP</a></li>
-                <li><a href="/ajax">AJAX</a></li>
-                <li><a href="/map">MAP</a></li>
-                <li><a href="/chart">CHART</a></li>
+
+                <%-- 로그인 했을때만 보이도록 --%>
+                <c:if test="${logincust != null}">
+                    <li><a href="/jsp">JSP</a></li>
+                    <li><a href="/ajax">AJAX</a></li>
+                    <li><a href="/map">MAP</a></li>
+                    <li><a href="/chart">CHART</a></li>
+                </c:if>
+
                 <li><a href="/cust">Cust</a></li>
                 <li><a href="/item">Item</a></li>
                 <c:if test="${logincust != null}">
@@ -88,6 +95,7 @@
             </ul>
             <c:choose>
                 <c:when test="${logincust == null}">
+                    <%--login되면 null에 logincust값을 넣어줌--%>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                         <li><a href="/register"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>
@@ -95,7 +103,12 @@
                 </c:when>
                 <c:otherwise>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/loginout"><span class="glyphicon glyphicon-log-in"></span> Loginout</a></li>
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <%--로그인 된 화면에서 아이디에 마우스 올리면 화면 하단에 주소표시.  //127.0.0.1/custinfo?id=id01--%>
+                        <li><a href="/custinfo?id=${logincust.id}">${logincust.id}</a></li>
+
                     </ul>
                 </c:otherwise>
             </c:choose>
