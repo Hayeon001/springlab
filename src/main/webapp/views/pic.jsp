@@ -11,13 +11,13 @@
         //전역변수
         init:function(){
             this.myVideoStream = document.querySelector('#myVideo');
-            $('#cfr_btn').click(function(){
-                $('#cfr_form').attr({
-                    'method':'post',
-                    'action':'/cfrimpl'
-                });
-                $('#cfr_form').submit();
-            });
+            // $('#cfr_btn').click(function(){
+            //     $('#cfr_form').attr({
+            //         'method':'post',
+            //         'action':'/cfrimpl'
+            //     });
+            //     $('#cfr_form').submit();
+            // });
         },
         getVideo:function(){
             //촬영
@@ -88,8 +88,15 @@
     <input type=button value="get Pic" onclick="pic.takeSnapshot();">
     <input type=button value="send Pic" onclick="pic.send();"><br>
     <input type=button value="Auto Pic" onclick="pic.takeAuto(5000);">
-    <form id="cfr_form">
+    <form action="/mycfr" method="/get" id="cfr_form">
         Image Name:<input type="text" name="imgname" id="imgname"><br>
-        <button id="cfr_btn">CFR</button>
+<%--        mycfr에 이미지 이름이 날아가--%>
+        <button type="submit" id="cfr_btn">CFR</button>
     </form>
+
+    <h2>emotion : ${result.emotion}</h2>
+    <h2>gender : ${result.gender}</h2>
+    <h2>pose : ${result.pose}</h2>
+    <h2>age : ${result.age}</h2>
+
 </div>
