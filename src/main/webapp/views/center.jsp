@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
+
+<style>
+  #w2{
+    width:500px;
+    border:2px solid red;
+  }
+</style>
+
+<script>
+  let center = {
+    init:function(){
+      $.ajax({
+        url:'/weather2',
+        success:function (data){
+          //alert(data);
+          center.display(data);
+        }
+      });
+    },
+    display:function(data) {
+      // var result = data.response.body.items.item[0].wfSv;
+      // //alert(result)
+      // $('#w2').html(result);
+
+      var result = data.response.body.items.item;
+      var txt = "";
+      $(result).each(function (index,item){   //0부터 객체만큼 돌아 item이라는 obj가 나와
+        txt += '<h5>';
+        txt += item.tm +' '+ item.ta;  //time
+        txt += '</h5>';
+      });
+      $('#w2').html(txt);  //w2에 뿌려
+    }
+  };
+  $(function (){
+    //center.init();
+  });
+</script>
+
+<div class="col-sm-8 text-left">
+  <h1><spring:message code="site.title"/></h1>
+  <p><spring:message code="site.content"/></p>
+  <hr>
+  <textarea id="w1" cols="80" rows="10">${weatherinfo}</textarea>
+<%--  <hr>--%>
+<%--  <textarea id="w2" cols="80" rows="10"></textarea>--%>
+  <hr>
+  <div id="w2" cols="80" rows="10"></div>
+</div>
