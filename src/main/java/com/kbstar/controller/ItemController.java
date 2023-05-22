@@ -27,7 +27,6 @@ public class ItemController {
     @Autowired
     CartService cartService;
 
-    //Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
     String dir = "item/";
     // 127.0.0.1/cust
     @RequestMapping("")

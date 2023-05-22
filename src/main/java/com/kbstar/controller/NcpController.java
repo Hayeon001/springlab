@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,12 @@ public class NcpController {
     @Value("${uploadimgdir}")
     String imgpath;
 
+    @Autowired
+    CFRCelebrityUtil celebrityUtil;
+
+    @Autowired
+    CFRFaceUtil faceUtil;
+
     @RequestMapping("/cfr1impl")
     public String cfr1impl(Model model, Ncp ncp) throws ParseException {  //Ncp에 이미지 파일덩어리가 올라와 있다
         //1.올라온 이미지를 서버에 파일 저장
@@ -32,7 +39,7 @@ public class NcpController {
         //2.저장한이미지를 ncp에 물어본다
             //String imgname = "jung.jpg";
             String imgname = ncp.getImg().getOriginalFilename(); // ncp.getImg() 이미지 덩어리에서 파일이름 가져와
-            JSONObject result = (JSONObject) CFRCelebrityUtil.getResult(imgpath,imgname);  //서버에 전송. result결과를 줌
+            JSONObject result = (JSONObject) celebrityUtil.getResult(imgpath,imgname);  //서버에 전송. result결과를 줌
             log.info(result.toJSONString());
 
             //결과 : {"faces":[{"celebrity":{"confidence":0.668766,"value":"이동욱"}}],"info":{"size":{"width":1200,"height":800},"faceCount":1}}
@@ -58,7 +65,7 @@ public class NcpController {
         //2.저장한이미지를 ncp에 물어본다
         //String imgname = "jung.jpg";
         String imgname = ncp.getImg().getOriginalFilename(); // ncp.getImg() 이미지 덩어리에서 파일이름 가져와
-        JSONObject result = (JSONObject) CFRFaceUtil.getResult(imgpath,imgname);  //서버에 전송. result결과를 줌
+        JSONObject result = (JSONObject) faceUtil.getResult(imgpath,imgname);  //서버에 전송. result결과를 줌
         log.info(result.toJSONString());
 
         //emotion //gender //pose //age
@@ -103,7 +110,7 @@ public class NcpController {
         //1.이미지 이미 저장되어 있음
 
         //2.저장한이미지를 ncp에 물어본다
-        JSONObject result = (JSONObject) CFRFaceUtil.getResult(imgpath,imgname);  //서버에 전송. result결과를 줌
+        JSONObject result = (JSONObject) faceUtil.getResult(imgpath,imgname);  //서버에 전송. result결과를 줌
         log.info(result.toJSONString());
 
         //emotion //gender //pose //age
